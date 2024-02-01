@@ -21,6 +21,6 @@ metadata:
   name: apisix.yaml
 data:
   apisix.yaml: |
-    {{- .Values.deployment.standaloneConfig | nindent 4 }}
+    {{- .Values.apisix.deployment.standaloneConfig | nindent 4 }}
     #END
 {{- end }}
