@@ -14,13 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-{{- if eq .Values.apisix.deployment.mode "standalone" }}
+{{- if and (eq .Values.apisix.deployment.mode "standalone") (not .Values.apisix.deployment.standalone.existingConfigMap) }}
 kind: ConfigMap
 apiVersion: v1
 metadata:
   name: apisix.yaml
 data:
   apisix.yaml: |
-    {{- .Values.apisix.deployment.standaloneConfig | nindent 4 }}
+    {{- .Values.apisix.deployment.standalone.config | nindent 4 }}
     #END
 {{- end }}
